@@ -9,3 +9,15 @@ services:
     volumes:
       - ./requirements.txt:/app/requirements.txt:ro
     restart: unless-stopped
+    networks:
+      - traefik-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.figma-connector.rule=Host(`figma.benzomesto.ru`)"
+      - "traefik.http.routers.figma-connector.entrypoints=websecure"
+      - "traefik.http.routers.figma-connector.tls.certresolver=letsencrypt"
+      - "traefik.http.services.figma-connector.loadbalancer.server.port=8000"
+
+networks:
+  traefik-network:
+    external: true
