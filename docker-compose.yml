@@ -6,4 +6,5 @@ services:
       - REQUIREMENTS_FILE=/app/requirements.txt
     volumes:
       - ./requirements.txt:/app/requirements.txt:ro
+      - ./requirements:/app/requirements:ro
     restart: unless-stopped

@@ -7,6 +7,7 @@ RUN pip install --no-cache-dir -r requirements-pip.txt
 
 COPY server.py .
 COPY requirements.txt .
+COPY requirements/ ./requirements/
 
 EXPOSE 8000
 
