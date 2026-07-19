@@ -1,9 +1,9 @@
 import asyncio
 import sys
 from mcp import ClientSession
-from mcp.client.sse import sse_client
+from mcp.client.streamable_http import streamable_http_client
 
-SERVER_URL = "https://figma.benzomesto.ru/sse"
+SERVER_URL = "https://figma.benzomesto.ru"
 
 async def main():
     sys.stdout.write(f"Checking MCP server: {SERVER_URL}\n\n")
@@ -11,7 +11,7 @@ async def main():
 
     try:
         async with asyncio.timeout(10):
-            async with sse_client(url=SERVER_URL) as streams:
+            async with streamable_http_client(url=SERVER_URL) as streams:
                 async with ClientSession(streams[0], streams[1]) as session:
                     await session.initialize()
 
