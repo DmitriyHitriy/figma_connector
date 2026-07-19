@@ -4,8 +4,6 @@ services:
   figma-connector:
     build: .
     container_name: figma-local-file-connector
-    ports:
-      - "8000:8000"
     environment:
       - REQUIREMENTS_FILE=/app/requirements.txt
     volumes:
