@@ -10,6 +10,7 @@ mcp = FastMCP(
     transport_security=TransportSecuritySettings(
         enable_dns_rebinding_protection=False,
     ),
+    streamable_http_path="/",
 )
 
 @mcp.tool()
@@ -26,7 +27,7 @@ def read_requirements(file_path: str = "") -> str:
 if __name__ == "__main__":
     import uvicorn
 
-    app = mcp.sse_app()
+    app = mcp.streamable_http_app()
     config = uvicorn.Config(app, host="0.0.0.0", port=8000, log_level="info")
     server = uvicorn.Server(config)
     server.run()
