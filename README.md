@@ -1,36 +1,21 @@
 # Figma Local File AI Connector
 
-MCP-сервер для Figma AI, который читает требования из локального текстового файла и публикует их через публичный HTTPS-туннель.
+MCP-сервер для Figma AI, который читает требования из локального текстового файла.
 
-## Установка
-
-```bash
-pip install mcp
-```
-
-## Запуск
+## Деплой на VPS (Dokploy + Traefik)
 
 ```bash
-# Использовать файл requirements.txt из текущей папки
-python server.py
-
-# Или указать свой файл
-$env:REQUIREMENTS_FILE = "C:\path\to\my-requirements.txt"
-python server.py
+docker-compose up --build -d
 ```
 
-Сервер создаст SSH-туннель через localhost.run и выведет публичный HTTPS URL:
-
-```
-=== FIGMA CONNECTOR URL: https://xxxxxx.lhr.life/sse ===
-```
+Сервер будет доступен по адресу: `https://figma.benzomesto.ru/sse`
 
 ## Подключение к Figma
 
-1. Запусти сервер: `python server.py`
-2. Скопируй URL из вывода (вида `https://xxxxxx.lhr.life/sse`)
-3. В Figma: чат AI → Connectors → Add custom connector → MCP Server
-4. Вставь скопированный URL → Connect
+1. Убедись, что сервер запущен на VPS
+2. В Figma: чат AI → Connectors → Add custom connector → MCP Server
+3. Введи URL: `https://figma.benzomesto.ru/sse`
+4. Нажми Connect
 
 ## Использование в чате Figma AI
 
