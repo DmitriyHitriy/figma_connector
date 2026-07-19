@@ -24,7 +24,7 @@ if __name__ == "__main__":
     import uvicorn
 
     app = mcp.sse_app()
-    config = uvicorn.Config(app, host="127.0.0.1", port=8000, log_level="info")
+    config = uvicorn.Config(app, host="0.0.0.0", port=8000, log_level="info")
     server = uvicorn.Server(config)
 
     def start_tunnel():
